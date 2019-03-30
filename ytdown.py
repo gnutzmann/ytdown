@@ -20,6 +20,15 @@ def download_video(url):
     videos = yt.streams.first()
     videos.download()
 
+def show_help():
+    print('usage: ytdown [-h]')
+    print('              [-u] [url] \n')
+    print('Script to download YouTube videos')
+    print('\n')
+    print('Params:')
+    print('    -h       show help')
+    print('    -u [url] download video')
+    print('\n')
 
 def options(param_list):
     if len(param_list) >= 1:
@@ -33,7 +42,7 @@ def options(param_list):
             else:
                 return False
         elif param_list[0] == '-h':
-            print('help')
+            show_help()
             return True
     else:
         return False
@@ -44,6 +53,5 @@ def main():
 
     if not (verify_param(params) and options(params)):
         print(ERROR_MSG_INVALID_PARAM)
-
 
 main()
