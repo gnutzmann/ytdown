@@ -9,6 +9,8 @@ import sys
 import validators as val
 
 ERROR_MSG_INVALID_PARAM = 'Invalid param. Try ' + sys.argv[0] + ' -h'
+WARNING_MSG_DOWNLOAD_START = 'Download started!'
+WARNING_MSG_DOWNLOAD_END = 'Download finished!'
 
 
 def verify_param(param_list):
@@ -35,9 +37,9 @@ def options(param_list):
         if param_list[0] == '-u' and (len(param_list) == 2):
             url = param_list[1]
             if val.url(url):
-                print('Download started!')
+                print(WARNING_MSG_DOWNLOAD_START)
                 download_video(url)
-                print('Download finished!')
+                print(WARNING_MSG_DOWNLOAD_END)
                 return True
             else:
                 return False
@@ -46,7 +48,6 @@ def options(param_list):
             return True
     else:
         return False
-
 
 def main():
     params = sys.argv[1:]
